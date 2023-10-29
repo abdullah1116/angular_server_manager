@@ -1,3 +1,4 @@
+use inline_colorization::*;
 use std::env;
 use std::time::Duration;
 
@@ -37,8 +38,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             print!("{}", line);
 
             if line.contains(error_message) {
-                println!("Error detected");
                 error_detected = true;
+
+                println!();
+                println!("{color_yellow}Error detected{color_reset}");
+                println!();
+
                 child.kill().await?;
 
                 break;
@@ -53,7 +58,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             std::process::exit(cmd_status.code().ok_or(1).unwrap());
         }
 
-        eprintln!("Angular server terminated with an error");
         time::sleep(Duration::from_secs(5)).await;
     }
 }

@@ -1,6 +1,6 @@
 [package]
 name = "angular_server_manager"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 [profile.release]
@@ -11,4 +11,5 @@ panic = 'abort'     # Abort on panic
 strip = true        # Strip symbols from binary*
 
 [dependencies]
+inline_colorization = "0.1.5"
 tokio = { version = "1", features = ["full"] }
